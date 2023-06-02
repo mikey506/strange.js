@@ -1,9 +1,19 @@
-# weird.js makefile
-
 CC = gcc
+CFLAGS = -Wall -Wextra
 
-all:
-	$(CC) -g3 -o weird compiler.c
+TARGET = compiler
+SRC = compiler.c
+OBJ = $(SRC:.c=.o)
+
+.PHONY: all clean
+
+all: $(TARGET)
+
+$(TARGET): $(OBJ)
+	$(CC) $(CFLAGS) -o $@ $^
+
+%.o: %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm weird
+	rm -f $(OBJ) $(TARGET)
