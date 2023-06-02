@@ -23,6 +23,7 @@ I recommed checking out [this video by Low Level Javascript](https://www.youtube
 ## Runtimes
 ### Node.js
 When using weird.js with Node.js and the require function, you need to define require explicitly. Here's an example of how to define require: 
+
     const require = new Function("var require = global.require || global.process.mainModule.constructor._load; return require")();
 
 ## Support
